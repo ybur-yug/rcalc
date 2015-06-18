@@ -1,41 +1,64 @@
 # Rcalc
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rcalc`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rcalc'
+gem 'rcalc'  :git => 'git://github.com/ybur-yug/rcalc.git'
 ```
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install rcalc
-
 ## Usage
+The main piece is the `calculator` class. See:
 
-TODO: Write usage instructions here
+```ruby
+calculator = Rcalc::Calculator.new
 
-## Development
+calculator.add(1, 1)
+# => 2
+calculator.multiply(2, 2)
+# => 4
+calculator.divide_float(5, 2)
+# => 2.5
+calculator.divide_int(5, 2)
+# => 2
+calculator.modulo(5, 2)
+# => 1
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## Calculator API
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### Add
+`Rcalc::Calculator#add(*a*, *b*)`
+Adds a and b
+Returns a float. Can take in either integers or floats
 
-## Contributing
+### Subtract
+`Rcalc::Calculator#subtract(*a*, *b*)`
+Subtracts b from a
+Returns a float. Can take in either integers or floats
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rcalc. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+### Multiply
+`Rcalc::Calculator#multiply(*a*, *b*)`
+Multiples a and b.
+Returns a float. Can take in either integers or floats
 
+### Divide Int
+`Rcalc::Calculator#divide_int(*a*, *b*)`
+Multiples a and b.
+Returns an Int, sacrificing the remainder. Can take in either integers or floats
 
-## License
+### Divide Float
+`Rcalc::Calculator#divide_float(*a*, *b*)`
+Divides a by b.
+Returns a float. Can take in either integers or floats
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+### Modulo
+`Rcalc::Calculator#modulo(*a*, *b*)`
+Returns a modulo b
+Returns an int. Can take in either integers or floats
 
